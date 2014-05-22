@@ -157,6 +157,9 @@
 			_pseudoStreamingStartQueryParam = (params['pseudostreamstart'] != undefined) ? (String(params['pseudostreamstart'])) : "start";
 			_streamer = (params['flashstreamer'] != undefined) ? (String(params['flashstreamer'])) : "";
 			
+			// configure bridge name
+			_bridge = (params['bridge'] != undefined) ? (String(params['bridge'])) : "mejs.MediaPluginBridge";
+			
 			// for audio them controls always show them
 			
 			if (!_isVideo && _alwaysShowControls) {
@@ -371,7 +374,7 @@
 						ExternalInterface.addCallback("hideFullscreenButton", hideFullscreenButton);
 	
 						// fire init method					
-						ExternalInterface.call("mejs.MediaPluginBridge.initPlugin", ExternalInterface.objectID);
+						ExternalInterface.call(_bridge + ".initPlugin", ExternalInterface.objectID);
 					}
 
 					_output.appendText("Success...\n");
@@ -1029,7 +1032,7 @@
 				
 				// use set timeout for performance reasons
 				//if (!_alwaysShowControls) {
-					ExternalInterface.call("setTimeout", "mejs.MediaPluginBridge.fireEvent('" + ExternalInterface.objectID + "','" + eventName + "'," + eventValues + ")",0);
+					ExternalInterface.call("setTimeout", _bridge + ".fireEvent('" + ExternalInterface.objectID + "','" + eventName + "'," + eventValues + ")",0);
 				//}
 			}
 		}
