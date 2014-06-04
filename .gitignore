@@ -12,3 +12,4 @@ node_modules
 local-build
 .project
 .pydevproject
+.README.md.html
