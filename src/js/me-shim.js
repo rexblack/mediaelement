@@ -282,6 +282,12 @@ mejs.HtmlMediaElementShim = {
 			}
 				
 			for (i=0; i<mediaFiles.length; i++) {
+			  
+			  // PATCH: special case in desktop safari which answers 'maybe', but cannot play accurately
+        if (!mejs.MediaFeatures.isiOS && !mejs.MediaFeatures.isAndroid && mediaFiles[i].type === 'application/x-mpegURL' && htmlMediaElement.canPlayType(mediaFiles[i].type) === 'maybe') {
+          continue;
+        }
+			  
 				// normal check
 				if (htmlMediaElement.canPlayType(mediaFiles[i].type).replace(/no/, '') !== '' 
 					// special case for Mac/Safari 5.0.3 which answers '' to canPlayType('audio/mp3') but 'maybe' to canPlayType('audio/mpeg')
