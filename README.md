@@ -1,5 +1,10 @@
-> Added bridge-param to swf
+> This fork integrates the following changes
 
+- Added bridge-param to swf
+- Allow crossdomain-access in swf
+- Added patch for 'maybe'-issue with hls in desktop-safari
+
+===
 
 # `<video>` and `<audio>` made easy. 
 
