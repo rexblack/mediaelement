@@ -10,6 +10,8 @@ newfeatures/*
 /mejs3/
 node_modules
 local-build
-.project
 .pydevproject
 .README.md.html
+
+# Eclipse
+.project
